@@ -331,6 +331,90 @@
             margin-top: 30px;
         }
 
+        .hod-login-section {
+            background: #e8f5e8;
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .hod-login-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .hod-panel {
+            background: #f0f8ff;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .hod-welcome {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .verification-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .verified {
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+
+        .not-verified {
+            background: #fef9e7;
+            color: #f39c12;
+        }
+
+        .posting-verification {
+            margin-top: 10px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .view-toggle button {
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            background: white;
+            color: #3498db;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .view-toggle button.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .view-toggle button:hover {
+            background: #3498db;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr;
@@ -351,6 +435,10 @@
             .export-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .hod-login-form {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -406,61 +494,96 @@
         </div>
 
         <div class="main-content">
-            <!-- Add New Intern Section -->
-            <div class="section">
-                <h2>Add New Intern</h2>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="internName">Intern Name *</label>
-                        <input type="text" id="internName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="internRegNo">Registration Number *</label>
-                        <input type="text" id="internRegNo" required>
-                    </div>
-                </div>
-                <button class="btn btn-primary" onclick="addIntern()">Add Intern</button>
+            <!-- View Toggle -->
+            <div class="view-toggle">
+                <button id="adminViewBtn" class="active" onclick="switchView('admin')">Admin View</button>
+                <button id="hodViewBtn" onclick="switchView('hod')">HOD Login</button>
             </div>
 
-            <!-- Summary Statistics -->
-            <div class="section">
-                <h2>Summary Statistics</h2>
-                <div class="summary-stats" id="summaryStats">
-                    <div class="stat-card">
-                        <div class="stat-number" id="totalInterns">0</div>
-                        <div class="stat-label">Total Interns</div>
+            <!-- HOD Login Section -->
+            <div id="hodLoginSection" class="hod-login-section" style="display: none;">
+                <h3 style="color: #27ae60; margin-bottom: 15px;">HOD Login</h3>
+                <div class="hod-login-form">
+                    <div class="form-group">
+                        <label for="hodUsername">Username</label>
+                        <input type="text" id="hodUsername" placeholder="e.g., hodkc">
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="completedInterns">0</div>
-                        <div class="stat-label">Completed (365 days)</div>
+                    <div class="form-group">
+                        <label for="hodPassword">Password</label>
+                        <input type="password" id="hodPassword" placeholder="e.g., kc2025">
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="pendingInterns">0</div>
-                        <div class="stat-label">Pending</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="avgProgress">0%</div>
-                        <div class="stat-label">Average Progress</div>
-                    </div>
+                    <button class="btn btn-success" onclick="hodLogin()">Login</button>
                 </div>
+                <div id="loginError" style="color: #e74c3c; margin-top: 10px; display: none;"></div>
             </div>
 
-            <!-- Search and Filter -->
-            <div class="section">
-                <h2>Manage Interns</h2>
-                <div class="search-filter">
-                    <input type="text" id="searchIntern" placeholder="Search by name or registration number..." 
-                           oninput="filterInterns()" style="width: 100%; max-width: 400px;">
+            <!-- HOD Panel -->
+            <div id="hodPanel" class="hod-panel" style="display: none;">
+                <div class="hod-welcome">
+                    Welcome, <span id="hodDeptName"></span> HOD
+                    <button class="btn btn-danger" onclick="hodLogout()" style="float: right; padding: 5px 15px; font-size: 0.8rem;">Logout</button>
                 </div>
-                
-                <div class="export-buttons">
-                    <button class="btn btn-success" onclick="exportAllData()">Export All Data (JSON)</button>
-                    <button class="btn btn-secondary" onclick="importData()">Import Data (JSON)</button>
-                    <input type="file" id="importFile" accept=".json" style="display: none;" onchange="handleImport(event)">
-                    <button class="btn btn-primary" onclick="generateMasterReport()">Generate Master Report</button>
+                <div id="hodPostings"></div>
+            </div>
+
+            <!-- Admin Sections -->
+            <div id="adminSections">
+                <!-- Add New Intern Section -->
+                <div class="section">
+                    <h2>Add New Intern</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="internName">Intern Name *</label>
+                            <input type="text" id="internName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="internRegNo">Registration Number *</label>
+                            <input type="text" id="internRegNo" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addIntern()">Add Intern</button>
                 </div>
 
-                <div class="intern-list" id="internList"></div>
+                <!-- Summary Statistics -->
+                <div class="section">
+                    <h2>Summary Statistics</h2>
+                    <div class="summary-stats" id="summaryStats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalInterns">0</div>
+                            <div class="stat-label">Total Interns</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="completedInterns">0</div>
+                            <div class="stat-label">Completed (365 days)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="pendingInterns">0</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="avgProgress">0%</div>
+                            <div class="stat-label">Average Progress</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="section">
+                    <h2>Manage Interns</h2>
+                    <div class="search-filter">
+                        <input type="text" id="searchIntern" placeholder="Search by name or registration number..." 
+                               oninput="filterInterns()" style="width: 100%; max-width: 400px;">
+                    </div>
+                    
+                    <div class="export-buttons">
+                        <button class="btn btn-success" onclick="exportAllData()">Export All Data (JSON)</button>
+                        <button class="btn btn-secondary" onclick="importData()">Import Data (JSON)</button>
+                        <input type="file" id="importFile" accept=".json" style="display: none;" onchange="handleImport(event)">
+                        <button class="btn btn-primary" onclick="generateMasterReport()">Generate Master Report</button>
+                    </div>
+
+                    <div class="intern-list" id="internList"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -484,11 +607,11 @@
                         <option value="PRASUTI TANTRA & STREE ROGA">PRASUTI TANTRA & STREE ROGA (PTSR)</option>
                         <option value="KAUMARABHRITYA">KAUMARABHRITYA (KB)</option>
                         <option value="LABORATORY">LABORATORY (LAB)</option>
-                        <option value="PHARMACY">PHARMACY</option>
-                        <option value="ATYAYIKA">ATYAYIKA</option>
-                        <option value="AYUSH">AYUSH</option>
-                        <option value="SCREENING">SCREENING</option>
-                        <option value="OTHER HOSPITALS">OTHER HOSPITALS</option>
+                        <option value="PHARMACY">PHARMACY (PHM)</option>
+                        <option value="ATYAYIKA">ATYAYIKA (ATY)</option>
+                        <option value="AYUSH">AYUSH (AYU)</option>
+                        <option value="SCREENING">SCREENING (SCR)</option>
+                        <option value="OTHER HOSPITALS">OTHER HOSPITALS (OTH)</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -519,6 +642,24 @@
     <script>
         let interns = JSON.parse(localStorage.getItem('internData') || '[]');
         let currentInternId = null;
+        let currentView = 'admin';
+        let currentHOD = null;
+
+        // HOD credentials
+        const hodCredentials = {
+            'hodkc': { password: 'kc2025', department: 'KAYACHIKITSA', displayName: 'KAYACHIKITSA' },
+            'hodst': { password: 'st2025', department: 'SHALYA TANTRA', displayName: 'SHALYA TANTRA' },
+            'hodskt': { password: 'skt2025', department: 'SHALAKYA TANTRA', displayName: 'SHALAKYA TANTRA' },
+            'hodpk': { password: 'pk2025', department: 'PANCHAKARMA', displayName: 'PANCHAKARMA' },
+            'hodptsr': { password: 'ptsr2025', department: 'PRASUTI TANTRA & STREE ROGA', displayName: 'PRASUTI TANTRA & STREE ROGA' },
+            'hodkb': { password: 'kb2025', department: 'KAUMARABHRITYA', displayName: 'KAUMARABHRITYA' },
+            'hodlab': { password: 'lab2025', department: 'LABORATORY', displayName: 'LABORATORY' },
+            'hodphm': { password: 'phm2025', department: 'PHARMACY', displayName: 'PHARMACY' },
+            'hodaty': { password: 'aty2025', department: 'ATYAYIKA', displayName: 'ATYAYIKA' },
+            'hodayu': { password: 'ayu2025', department: 'AYUSH', displayName: 'AYUSH' },
+            'hodscr': { password: 'scr2025', department: 'SCREENING', displayName: 'SCREENING' },
+            'hodoth': { password: 'oth2025', department: 'OTHER HOSPITALS', displayName: 'OTHER HOSPITALS' }
+        };
 
         // Department codes mapping
         const deptCodes = {
@@ -535,6 +676,161 @@
             'SCREENING': 'SCR',
             'OTHER HOSPITALS': 'OTH'
         };
+
+        function switchView(view) {
+            currentView = view;
+            const adminBtn = document.getElementById('adminViewBtn');
+            const hodBtn = document.getElementById('hodViewBtn');
+            const adminSections = document.getElementById('adminSections');
+            const hodLoginSection = document.getElementById('hodLoginSection');
+            const hodPanel = document.getElementById('hodPanel');
+
+            if (view === 'admin') {
+                adminBtn.classList.add('active');
+                hodBtn.classList.remove('active');
+                adminSections.style.display = 'block';
+                hodLoginSection.style.display = 'none';
+                hodPanel.style.display = 'none';
+                currentHOD = null;
+            } else {
+                adminBtn.classList.remove('active');
+                hodBtn.classList.add('active');
+                adminSections.style.display = 'none';
+                hodLoginSection.style.display = 'block';
+                hodPanel.style.display = 'none';
+            }
+        }
+
+        function hodLogin() {
+            const username = document.getElementById('hodUsername').value.trim();
+            const password = document.getElementById('hodPassword').value.trim();
+            const errorDiv = document.getElementById('loginError');
+
+            if (!username || !password) {
+                errorDiv.textContent = 'Please enter both username and password.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            if (hodCredentials[username] && hodCredentials[username].password === password) {
+                currentHOD = hodCredentials[username];
+                document.getElementById('hodLoginSection').style.display = 'none';
+                document.getElementById('hodPanel').style.display = 'block';
+                document.getElementById('hodDeptName').textContent = currentHOD.displayName;
+                renderHODPostings();
+                errorDiv.style.display = 'none';
+                
+                // Clear login form
+                document.getElementById('hodUsername').value = '';
+                document.getElementById('hodPassword').value = '';
+            } else {
+                errorDiv.textContent = 'Invalid username or password.';
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        function hodLogout() {
+            currentHOD = null;
+            document.getElementById('hodPanel').style.display = 'none';
+            document.getElementById('hodLoginSection').style.display = 'block';
+        }
+
+        function renderHODPostings() {
+            if (!currentHOD) return;
+
+            const hodPostingsDiv = document.getElementById('hodPostings');
+            const relevantPostings = [];
+
+            // Find all postings in this HOD's department
+            interns.forEach(intern => {
+                intern.postings.forEach(posting => {
+                    if (posting.department === currentHOD.department) {
+                        relevantPostings.push({
+                            intern: intern,
+                            posting: posting
+                        });
+                    }
+                });
+            });
+
+            if (relevantPostings.length === 0) {
+                hodPostingsDiv.innerHTML = '<p style="text-align: center; color: #7f8c8d; font-style: italic;">No postings found for your department.</p>';
+                return;
+            }
+
+            hodPostingsDiv.innerHTML = `
+                <h3 style="color: #2c3e50; margin-bottom: 20px;">Postings in ${currentHOD.displayName}</h3>
+                <div class="intern-list">
+                    ${relevantPostings.map(item => {
+                        const posting = item.posting;
+                        const intern = item.intern;
+                        const isVerified = posting.verification && posting.verification.verified;
+                        
+                        return `
+                            <div class="intern-card">
+                                <div class="intern-header">
+                                    <div>
+                                        <div class="intern-name">${intern.name}</div>
+                                        <div class="intern-reg">Reg: ${intern.regNo}</div>
+                                    </div>
+                                    <span class="verification-badge ${isVerified ? 'verified' : 'not-verified'}">
+                                        ${isVerified ? '✓ VERIFIED' : '⚠ NOT VERIFIED'}
+                                    </span>
+                                </div>
+
+                                <div class="posting-item">
+                                    <div class="posting-dept">${posting.department}</div>
+                                    <div class="posting-dates">
+                                        ${new Date(posting.fromDate).toLocaleDateString()} - 
+                                        ${new Date(posting.toDate).toLocaleDateString()}
+                                    </div>
+                                    <div class="posting-days">${posting.days} days</div>
+                                    
+                                    ${isVerified ? `
+                                        <div class="posting-verification">
+                                            <strong>✓ Verified by:</strong> ${posting.verification.verifiedBy}<br>
+                                            <strong>Date:</strong> ${new Date(posting.verification.verifiedAt).toLocaleDateString()}<br>
+                                            <strong>Time:</strong> ${new Date(posting.verification.verifiedAt).toLocaleTimeString()}
+                                        </div>
+                                    ` : `
+                                        <div style="margin-top: 15px;">
+                                            <button class="btn btn-success" onclick="verifyPosting(${intern.id}, ${posting.id})">
+                                                Verify Posting
+                                            </button>
+                                        </div>
+                                    `}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function verifyPosting(internId, postingId) {
+            if (!currentHOD) return;
+
+            const intern = interns.find(i => i.id === internId);
+            if (!intern) return;
+
+            const posting = intern.postings.find(p => p.id === postingId);
+            if (!posting) return;
+
+            if (posting.department !== currentHOD.department) {
+                alert('You can only verify postings in your own department.');
+                return;
+            }
+
+            posting.verification = {
+                verified: true,
+                verifiedBy: currentHOD.displayName + ' HOD',
+                verifiedAt: new Date().toISOString()
+            };
+
+            saveData();
+            renderHODPostings();
+            alert('Posting verified successfully!');
+        }
 
         function addIntern() {
             const name = document.getElementById('internName').value.trim();
@@ -591,7 +887,7 @@
         }
 
         function closeModal() {
-            document.getElementById('addPostingModal').style.display = 'block';
+            document.getElementById('addPostingModal').style.display = 'none';
             document.getElementById('postingDept').value = '';
             document.getElementById('postingFromDate').value = '';
             document.getElementById('postingToDate').value = '';
@@ -628,7 +924,8 @@
                 department: dept,
                 fromDate: fromDate,
                 toDate: toDate,
-                days: days
+                days: days,
+                verification: null // Will be set when HOD verifies
             };
 
             intern.postings.push(posting);
@@ -701,6 +998,21 @@
                                 <p style="color: #7f8c8d; margin: 5px 0;">
                                     <strong>Period:</strong> ${new Date(posting.fromDate).toLocaleDateString()} to ${new Date(posting.toDate).toLocaleDateString()}
                                 </p>
+                                
+                                ${posting.verification && posting.verification.verified ? `
+                                    <div style="background: #d5f4e6; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                                        <p style="color: #27ae60; font-weight: bold; margin: 0;">✓ VERIFIED</p>
+                                        <p style="color: #27ae60; font-size: 0.9em; margin: 5px 0 0 0;">
+                                            Verified by: ${posting.verification.verifiedBy}<br>
+                                            Date: ${new Date(posting.verification.verifiedAt).toLocaleDateString()}
+                                        </p>
+                                    </div>
+                                ` : `
+                                    <div style="background: #fef9e7; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                                        <p style="color: #f39c12; font-weight: bold; margin: 0;">⚠ PENDING VERIFICATION</p>
+                                    </div>
+                                `}
+
                                 <div style="margin-top: 15px; text-align: center;">
                                     <div style="border-top: 2px solid #2c3e50; width: 200px; margin: 0 auto;"></div>
                                     <p style="margin-top: 8px; font-size: 0.9em; color: #2c3e50;"><strong>HOD Signature & Date</strong></p>
@@ -821,20 +1133,33 @@
                         </div>
 
                         <div style="max-height: 200px; overflow-y: auto;">
-                            ${intern.postings.map(posting => `
-                                <div class="posting-item">
-                                    <div class="posting-dept">${posting.department}</div>
-                                    <div class="posting-dates">
-                                        ${new Date(posting.fromDate).toLocaleDateString()} - 
-                                        ${new Date(posting.toDate).toLocaleDateString()}
+                            ${intern.postings.map(posting => {
+                                const isVerified = posting.verification && posting.verification.verified;
+                                return `
+                                    <div class="posting-item">
+                                        <div class="posting-dept">
+                                            ${posting.department}
+                                            <span class="verification-badge ${isVerified ? 'verified' : 'not-verified'}">
+                                                ${isVerified ? '✓' : '⚠'}
+                                            </span>
+                                        </div>
+                                        <div class="posting-dates">
+                                            ${new Date(posting.fromDate).toLocaleDateString()} - 
+                                            ${new Date(posting.toDate).toLocaleDateString()}
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span class="posting-days">${posting.days} days</span>
+                                            <button class="btn btn-danger" style="padding: 2px 8px; font-size: 0.7rem;" 
+                                                    onclick="deletePosting(${intern.id}, ${posting.id})">Delete</button>
+                                        </div>
+                                        ${isVerified ? `
+                                            <div style="font-size: 0.8rem; color: #27ae60; margin-top: 5px;">
+                                                Verified by ${posting.verification.verifiedBy} on ${new Date(posting.verification.verifiedAt).toLocaleDateString()}
+                                            </div>
+                                        ` : ''}
                                     </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <span class="posting-days">${posting.days} days</span>
-                                        <button class="btn btn-danger" style="padding: 2px 8px; font-size: 0.7rem;" 
-                                                onclick="deletePosting(${intern.id}, ${posting.id})">Delete</button>
-                                    </div>
-                                </div>
-                            `).join('')}
+                                `;
+                            }).join('')}
                         </div>
 
                         <div class="action-buttons">
@@ -956,12 +1281,16 @@
                                     <th style="padding: 15px; text-align: center;">Progress</th>
                                     <th style="padding: 15px; text-align: center;">Status</th>
                                     <th style="padding: 15px; text-align: center;">Departments</th>
+                                    <th style="padding: 15px; text-align: center;">Verified</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 ${interns.map((intern, index) => {
                                     const progress = (intern.totalDays / 365) * 100;
                                     const isCompleted = intern.totalDays >= 365;
+                                    const verifiedCount = intern.postings.filter(p => p.verification && p.verification.verified).length;
+                                    const totalPostings = intern.postings.length;
+                                    
                                     return `
                                         <tr style="border-bottom: 1px solid #e1e8ed; ${index % 2 === 0 ? 'background: #f8f9fa;' : ''}">
                                             <td style="padding: 12px; font-weight: bold;">${intern.name}</td>
@@ -978,7 +1307,12 @@
                                                     ${isCompleted ? 'COMPLETED' : 'PENDING'}
                                                 </span>
                                             </td>
-                                            <td style="padding: 12px; text-align: center;">${intern.postings.length}/12</td>
+                                            <td style="padding: 12px; text-align: center;">${totalPostings}/12</td>
+                                            <td style="padding: 12px; text-align: center;">
+                                                <span style="color: ${verifiedCount === totalPostings && totalPostings > 0 ? '#27ae60' : '#f39c12'}; font-weight: bold;">
+                                                    ${verifiedCount}/${totalPostings}
+                                                </span>
+                                            </td>
                                         </tr>
                                     `;
                                 }).join('')}
