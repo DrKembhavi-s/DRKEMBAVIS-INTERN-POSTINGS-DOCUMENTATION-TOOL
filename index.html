@@ -528,6 +528,64 @@
 
             <!-- Admin Sections -->
             <div id="adminSections">
+                <!-- Posting Letters Generation Section -->
+                <div class="section">
+                    <h2>Generate Posting Letters</h2>
+                    <p style="color: #7f8c8d; margin-bottom: 20px;">Generate official posting letters from Medical Superintendent to HODs for upcoming intern postings.</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="letterInternName">Intern Name *</label>
+                            <input type="text" id="letterInternName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="letterInternRegNo">Registration Number *</label>
+                            <input type="text" id="letterInternRegNo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="letterDept">Department *</label>
+                            <select id="letterDept" required>
+                                <option value="">Select Department</option>
+                                <option value="KAYACHIKITSA">KAYACHIKITSA (KC)</option>
+                                <option value="SHALYA TANTRA">SHALYA TANTRA (ST)</option>
+                                <option value="SHALAKYA TANTRA">SHALAKYA TANTRA (SKT)</option>
+                                <option value="PANCHAKARMA">PANCHAKARMA (PK)</option>
+                                <option value="PRASUTI TANTRA & STREE ROGA">PRASUTI TANTRA & STREE ROGA (PTSR)</option>
+                                <option value="KAUMARABHRITYA">KAUMARABHRITYA (KB)</option>
+                                <option value="LABORATORY">LABORATORY (LAB)</option>
+                                <option value="PHARMACY">PHARMACY (PHM)</option>
+                                <option value="ATYAYIKA">ATYAYIKA (ATY)</option>
+                                <option value="AYUSH">AYUSH (AYU)</option>
+                                <option value="SCREENING">SCREENING (SCR)</option>
+                                <option value="OTHER HOSPITALS">OTHER HOSPITALS (OTH)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="letterFromDate">From Date *</label>
+                            <input type="date" id="letterFromDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="letterToDate">To Date *</label>
+                            <input type="date" id="letterToDate" required>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+                        <button class="btn btn-primary" onclick="addToLetterList()">Add to Letter List</button>
+                        <button class="btn btn-success" onclick="generateSingleLetter()">Generate Single Letter</button>
+                        <button class="btn btn-secondary" onclick="clearLetterForm()">Clear Form</button>
+                    </div>
+
+                    <div id="letterListSection" style="display: none; margin-top: 30px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">Batch Letter Generation</h3>
+                        <div id="letterList" style="background: white; border-radius: 8px; padding: 15px; max-height: 300px; overflow-y: auto;"></div>
+                        <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
+                            <button class="btn btn-success" onclick="generateBatchLetters()">Generate Individual Letters for All</button>
+                            <button class="btn btn-primary" onclick="generateDepartmentBatchLetters()">Generate Batch Letters by Department</button>
+                            <button class="btn btn-danger" onclick="clearLetterList()">Clear All</button>
+                        </div>
+                    </div>
+                </div>
                 <!-- Add New Intern Section -->
                 <div class="section">
                     <h2>Add New Intern</h2>
@@ -644,6 +702,23 @@
         let currentInternId = null;
         let currentView = 'admin';
         let currentHOD = null;
+        let letterList = [];
+
+        // Department training guidelines
+        const departmentGuidelines = {
+            'KAYACHIKITSA': 'The intern should be exposed to comprehensive internal medicine practices, diagnosis and management of various systemic disorders, Panchakarma procedures, and classical Ayurvedic treatment protocols. Emphasis should be given to practical training in patient examination, case taking, and therapeutic procedures.',
+            'SHALYA TANTRA': 'The intern should receive training in surgical procedures, wound management, pre and post-operative care, and classical surgical techniques as described in Ayurvedic texts. Practical exposure to minor surgical procedures, wound dressing, and surgical instruments handling is essential.',
+            'SHALAKYA TANTRA': 'The intern should be trained in ENT, Ophthalmology, and Dentistry procedures as per Ayurvedic principles. Focus should be given to examination techniques, therapeutic procedures for eye, ear, nose, throat, and oral cavity disorders.',
+            'PANCHAKARMA': 'The intern should receive comprehensive training in all Panchakarma procedures including Vamana, Virechana, Basti, Nasya, and Raktamokshana. Practical training in preparation of medicines, patient selection, and post-procedural care is mandatory.',
+            'PRASUTI TANTRA & STREE ROGA': 'The intern should be exposed to gynecological and obstetric care, antenatal and postnatal management, family planning methods, and treatment of gynecological disorders as per Ayurvedic principles.',
+            'KAUMARABHRITYA': 'The intern should receive training in pediatric care, child development, vaccination, nutritional counseling, and management of pediatric disorders according to Ayurvedic pediatric principles.',
+            'LABORATORY': 'The intern should be trained in various laboratory investigations, sample collection, processing, and interpretation of results. Knowledge of modern laboratory techniques and their correlation with Ayurvedic diagnostic methods should be emphasized.',
+            'PHARMACY': 'The intern should receive practical training in pharmaceutical preparations, quality control, drug standardization, and manufacturing processes of Ayurvedic medicines as per GMP guidelines.',
+            'ATYAYIKA': 'The intern should be trained in emergency medical care, first aid, trauma management, and critical care procedures. Integration of Ayurvedic emergency protocols with modern emergency medicine should be emphasized.',
+            'AYUSH': 'The intern should receive exposure to integrated healthcare delivery, community health programs, and interdisciplinary approach in patient care involving various AYUSH systems.',
+            'SCREENING': 'The intern should be trained in patient screening procedures, triage, preliminary examination, and basic diagnostic skills. Focus should be given to history taking and initial patient assessment.',
+            'OTHER HOSPITALS': 'The intern should receive exposure to healthcare delivery in different settings, gain experience in diverse clinical scenarios, and understand healthcare management in various institutional frameworks.'
+        };
 
         // HOD credentials
         const hodCredentials = {
