@@ -673,6 +673,275 @@
         </div>
     </div>
 
+    <!-- Assessment Modal -->
+    <div id="assessmentModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <span class="close" onclick="closeAssessmentModal()">&times;</span>
+            <h2>Comprehensive Performance Assessment</h2>
+            <div id="assessmentInternInfo" style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;"></div>
+            
+            <form id="assessmentForm">
+                <!-- Clinical Knowledge & Skills -->
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">1. Clinical Knowledge & Skills</h4>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
+                        <label>Theoretical knowledge of the subject</label>
+                        <select name="theoreticalKnowledge" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>Practical application of knowledge</label>
+                        <select name="practicalApplication" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>Clinical examination skills</label>
+                        <select name="clinicalExamination" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Patient Care & Communication -->
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">2. Patient Care & Communication</h4>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
+                        <label>Patient interaction and communication</label>
+                        <select name="patientCommunication" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>Empathy and bedside manner</label>
+                        <select name="empathy" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>History taking abilities</label>
+                        <select name="historyTaking" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Professionalism & Ethics -->
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">3. Professionalism & Ethics</h4>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
+                        <label>Professional behavior and conduct</label>
+                        <select name="professionalism" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>Ethics and confidentiality</label>
+                        <select name="ethics" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>Team collaboration</label>
+                        <select name="teamwork" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Learning Attitude & Initiative -->
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">4. Learning Attitude & Initiative</h4>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
+                        <label>Eagerness to learn and improve</label>
+                        <select name="learningAttitude" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>Initiative and proactiveness</label>
+                        <select name="initiative" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>Response to feedback and guidance</label>
+                        <select name="feedbackResponse" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Attendance & Punctuality -->
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">5. Attendance & Punctuality</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Total Working Days</label>
+                            <input type="number" name="totalWorkingDays" id="totalWorkingDays" required min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Days Present</label>
+                            <input type="number" name="daysPresent" id="daysPresent" required min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Days Absent</label>
+                            <input type="number" name="daysAbsent" id="daysAbsent" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Punctuality Rating</label>
+                            <select name="punctuality" required>
+                                <option value="">Select Rating</option>
+                                <option value="5">Excellent (5)</option>
+                                <option value="4">Very Good (4)</option>
+                                <option value="3">Good (3)</option>
+                                <option value="2">Satisfactory (2)</option>
+                                <option value="1">Needs Improvement (1)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Department-Specific Skills -->
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">6. Department-Specific Skills</h4>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
+                        <label>Mastery of department-specific procedures</label>
+                        <select name="departmentSkills" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
+                        <label>Understanding of department protocols</label>
+                        <select name="protocolUnderstanding" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">Excellent (5)</option>
+                            <option value="4">Very Good (4)</option>
+                            <option value="3">Good (3)</option>
+                            <option value="2">Satisfactory (2)</option>
+                            <option value="1">Needs Improvement (1)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Overall Assessment -->
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">7. Overall Assessment</h4>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label>Overall Performance Rating</label>
+                        <select name="overallRating" required>
+                            <option value="">Select Overall Rating</option>
+                            <option value="Outstanding">Outstanding</option>
+                            <option value="Excellent">Excellent</option>
+                            <option value="Very Good">Very Good</option>
+                            <option value="Good">Good</option>
+                            <option value="Satisfactory">Satisfactory</option>
+                            <option value="Needs Improvement">Needs Improvement</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label>Recommendation</label>
+                        <select name="recommendation" required>
+                            <option value="">Select Recommendation</option>
+                            <option value="Highly Recommended">Highly Recommended for Future Postings</option>
+                            <option value="Recommended">Recommended</option>
+                            <option value="Conditionally Recommended">Conditionally Recommended</option>
+                            <option value="Needs Further Training">Needs Further Training</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Comments Section -->
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">8. Detailed Comments & Feedback</h4>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label>Strengths and Positive Observations</label>
+                        <textarea name="strengths" rows="3" style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 5px;" placeholder="Describe the intern's key strengths and positive qualities observed during the posting..."></textarea>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label>Areas for Improvement</label>
+                        <textarea name="improvements" rows="3" style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 5px;" placeholder="Specify areas where the intern needs improvement and suggestions for development..."></textarea>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label>Additional Comments</label>
+                        <textarea name="additionalComments" rows="4" style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 5px;" placeholder="Any additional observations, recommendations, or comments about the intern's performance..."></textarea>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <button type="submit" class="btn btn-success" style="margin-right: 15px;">Submit Assessment</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeAssessmentModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Individual Report Modal -->
     <div id="reportModal" class="modal">
         <div class="modal-content">
@@ -909,6 +1178,19 @@
                                             <strong>✓ Verified by:</strong> ${posting.verification.verifiedBy}<br>
                                             <strong>Date:</strong> ${new Date(posting.verification.verifiedAt).toLocaleDateString()}<br>
                                             <strong>Time:</strong> ${new Date(posting.verification.verifiedAt).toLocaleTimeString()}
+                                            
+                                            ${posting.assessment ? `
+                                                <div style="margin-top: 10px; padding: 10px; background: #e8f5e8; border-radius: 5px;">
+                                                    <strong>📋 ASSESSMENT COMPLETED</strong><br>
+                                                    <small>Overall Rating: ${posting.assessment.overallRating} | Completed: ${new Date(posting.assessment.assessedAt).toLocaleDateString()}</small>
+                                                </div>
+                                            ` : `
+                                                <div style="margin-top: 10px;">
+                                                    <button class="btn btn-primary" onclick="openAssessmentModal(${intern.id}, ${posting.id})" style="padding: 8px 12px; font-size: 0.8rem;">
+                                                        Assess Performance
+                                                    </button>
+                                                </div>
+                                            `}
                                         </div>
                                     ` : `
                                         <div style="margin-top: 15px;">
@@ -948,6 +1230,157 @@
             saveData();
             renderHODPostings();
             alert('Posting verified successfully!');
+        }
+
+        // Assessment functions
+        let currentAssessmentInternId = null;
+        let currentAssessmentPostingId = null;
+
+        function openAssessmentModal(internId, postingId) {
+            if (!currentHOD) return;
+
+            const intern = interns.find(i => i.id === internId);
+            const posting = intern.postings.find(p => p.id === postingId);
+            
+            if (posting.department !== currentHOD.department) {
+                alert('You can only assess postings in your own department.');
+                return;
+            }
+
+            currentAssessmentInternId = internId;
+            currentAssessmentPostingId = postingId;
+
+            document.getElementById('assessmentInternInfo').innerHTML = `
+                <strong>Performance Assessment for:</strong> ${intern.name} (${intern.regNo})<br>
+                <strong>Department:</strong> ${posting.department}<br>
+                <strong>Posting Period:</strong> ${new Date(posting.fromDate).toLocaleDateString()} - ${new Date(posting.toDate).toLocaleDateString()}<br>
+                <strong>Duration:</strong> ${posting.days} days
+            `;
+
+            // Set default total working days
+            document.getElementById('totalWorkingDays').value = posting.days;
+            calculateAttendance();
+
+            document.getElementById('assessmentModal').style.display = 'block';
+        }
+
+        function closeAssessmentModal() {
+            document.getElementById('assessmentModal').style.display = 'none';
+            document.getElementById('assessmentForm').reset();
+            currentAssessmentInternId = null;
+            currentAssessmentPostingId = null;
+        }
+
+        function calculateAttendance() {
+            const totalDays = parseInt(document.getElementById('totalWorkingDays').value) || 0;
+            const presentDays = parseInt(document.getElementById('daysPresent').value) || 0;
+            const absentDays = totalDays - presentDays;
+            document.getElementById('daysAbsent').value = absentDays >= 0 ? absentDays : 0;
+        }
+
+        // Assessment form event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for attendance calculation
+            const totalDaysInput = document.getElementById('totalWorkingDays');
+            const presentDaysInput = document.getElementById('daysPresent');
+            
+            if (totalDaysInput && presentDaysInput) {
+                totalDaysInput.addEventListener('input', calculateAttendance);
+                presentDaysInput.addEventListener('input', calculateAttendance);
+            }
+
+            // Assessment form submission
+            const assessmentForm = document.getElementById('assessmentForm');
+            if (assessmentForm) {
+                assessmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    submitAssessment();
+                });
+            }
+        });
+
+        function submitAssessment() {
+            if (!currentHOD || !currentAssessmentInternId || !currentAssessmentPostingId) return;
+
+            const form = document.getElementById('assessmentForm');
+            const formData = new FormData(form);
+            
+            // Calculate average score
+            const scores = [
+                'theoreticalKnowledge', 'practicalApplication', 'clinicalExamination',
+                'patientCommunication', 'empathy', 'historyTaking',
+                'professionalism', 'ethics', 'teamwork',
+                'learningAttitude', 'initiative', 'feedbackResponse',
+                'punctuality', 'departmentSkills', 'protocolUnderstanding'
+            ];
+            
+            let totalScore = 0;
+            let scoreCount = 0;
+            
+            scores.forEach(score => {
+                const value = parseInt(formData.get(score));
+                if (!isNaN(value)) {
+                    totalScore += value;
+                    scoreCount++;
+                }
+            });
+            
+            const averageScore = scoreCount > 0 ? (totalScore / scoreCount).toFixed(2) : 0;
+
+            const assessment = {
+                assessedBy: currentHOD.displayName + ' HOD',
+                assessedAt: new Date().toISOString(),
+                
+                // Scores
+                scores: {
+                    theoreticalKnowledge: parseInt(formData.get('theoreticalKnowledge')),
+                    practicalApplication: parseInt(formData.get('practicalApplication')),
+                    clinicalExamination: parseInt(formData.get('clinicalExamination')),
+                    patientCommunication: parseInt(formData.get('patientCommunication')),
+                    empathy: parseInt(formData.get('empathy')),
+                    historyTaking: parseInt(formData.get('historyTaking')),
+                    professionalism: parseInt(formData.get('professionalism')),
+                    ethics: parseInt(formData.get('ethics')),
+                    teamwork: parseInt(formData.get('teamwork')),
+                    learningAttitude: parseInt(formData.get('learningAttitude')),
+                    initiative: parseInt(formData.get('initiative')),
+                    feedbackResponse: parseInt(formData.get('feedbackResponse')),
+                    punctuality: parseInt(formData.get('punctuality')),
+                    departmentSkills: parseInt(formData.get('departmentSkills')),
+                    protocolUnderstanding: parseInt(formData.get('protocolUnderstanding'))
+                },
+                
+                // Attendance
+                attendance: {
+                    totalWorkingDays: parseInt(formData.get('totalWorkingDays')),
+                    daysPresent: parseInt(formData.get('daysPresent')),
+                    daysAbsent: parseInt(formData.get('daysAbsent')),
+                    attendancePercentage: ((parseInt(formData.get('daysPresent')) / parseInt(formData.get('totalWorkingDays'))) * 100).toFixed(1)
+                },
+                
+                // Overall assessment
+                overallRating: formData.get('overallRating'),
+                recommendation: formData.get('recommendation'),
+                averageScore: averageScore,
+                
+                // Comments
+                comments: {
+                    strengths: formData.get('strengths') || '',
+                    improvements: formData.get('improvements') || '',
+                    additional: formData.get('additionalComments') || ''
+                }
+            };
+
+            // Find and update the posting
+            const intern = interns.find(i => i.id === currentAssessmentInternId);
+            const posting = intern.postings.find(p => p.id === currentAssessmentPostingId);
+            posting.assessment = assessment;
+
+            saveData();
+            renderHODPostings();
+            closeAssessmentModal();
+            
+            alert('Performance assessment completed successfully!');
         }
 
         // Utility functions
@@ -1490,6 +1923,7 @@
                                         ${isVerified ? `
                                             <div style="font-size: 0.8rem; color: #27ae60; margin-top: 5px;">
                                                 Verified by ${posting.verification.verifiedBy} on ${new Date(posting.verification.verifiedAt).toLocaleDateString()}
+                                                ${posting.assessment ? `<br><strong>Assessed:</strong> ${posting.assessment.overallRating} (${posting.assessment.averageScore}/5)` : ''}
                                             </div>
                                         ` : ''}
                                     </div>
@@ -1655,6 +2089,14 @@
                                             Verified by: ${posting.verification.verifiedBy}<br>
                                             Date: ${new Date(posting.verification.verifiedAt).toLocaleDateString()}
                                         </p>
+                                        ${posting.assessment ? `
+                                            <div style="background: #e8f5e8; padding: 8px; border-radius: 4px; margin-top: 8px;">
+                                                <p style="color: #27ae60; font-weight: bold; margin: 0; font-size: 0.9em;">📋 ASSESSMENT: ${posting.assessment.overallRating}</p>
+                                                <p style="color: #27ae60; font-size: 0.8em; margin: 2px 0 0 0;">
+                                                    Avg Score: ${posting.assessment.averageScore}/5 | Attendance: ${posting.assessment.attendance.attendancePercentage}%
+                                                </p>
+                                            </div>
+                                        ` : ''}
                                     </div>
                                 ` : `
                                     <div style="background: #fef9e7; padding: 10px; border-radius: 5px; margin: 10px 0;">
@@ -1845,14 +2287,20 @@
         document.addEventListener('DOMContentLoaded', function() {
             switchView('admin');
             
+            // Close modals when clicking outside
             window.onclick = function(event) {
                 const addModal = document.getElementById('addPostingModal');
                 const reportModal = document.getElementById('reportModal');
+                const assessmentModal = document.getElementById('assessmentModal');
+                
                 if (event.target == addModal) {
                     closeModal();
                 }
                 if (event.target == reportModal) {
                     closeReportModal();
+                }
+                if (event.target == assessmentModal) {
+                    closeAssessmentModal();
                 }
             };
 
@@ -1860,8 +2308,28 @@
                 if (e.key === 'Escape') {
                     closeModal();
                     closeReportModal();
+                    closeAssessmentModal();
                 }
             });
+
+            // Assessment form event listeners
+            setTimeout(() => {
+                const totalDaysInput = document.getElementById('totalWorkingDays');
+                const presentDaysInput = document.getElementById('daysPresent');
+                
+                if (totalDaysInput && presentDaysInput) {
+                    totalDaysInput.addEventListener('input', calculateAttendance);
+                    presentDaysInput.addEventListener('input', calculateAttendance);
+                }
+
+                const assessmentForm = document.getElementById('assessmentForm');
+                if (assessmentForm) {
+                    assessmentForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        submitAssessment();
+                    });
+                }
+            }, 100);
         });
     </script>
 </body>
