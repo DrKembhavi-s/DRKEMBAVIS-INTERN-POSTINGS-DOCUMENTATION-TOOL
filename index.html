@@ -91,16 +91,15 @@
             font-size: 0.95rem;
         }
 
-        input, select, textarea {
+        input, select {
             padding: 12px;
             border: 2px solid #e1e8ed;
             border-radius: 8px;
             font-size: 1rem;
             transition: all 0.3s ease;
-            font-family: inherit;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus, select:focus {
             outline: none;
             border-color: #3498db;
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
@@ -536,7 +535,6 @@
                                 <option value="PANCHAKARMA">PANCHAKARMA (PK)</option>
                                 <option value="PRASUTI TANTRA & STREE ROGA">PRASUTI TANTRA & STREE ROGA (PTSR)</option>
                                 <option value="KAUMARABHRITYA">KAUMARABHRITYA (KB)</option>
-                                <option value="SWASTHAVRITTA">SWASTHAVRITTA (SV)</option>
                                 <option value="LABORATORY">LABORATORY (LAB)</option>
                                 <option value="PHARMACY">PHARMACY (PHM)</option>
                                 <option value="ATYAYIKA">ATYAYIKA (ATY)</option>
@@ -650,7 +648,6 @@
                         <option value="PANCHAKARMA">PANCHAKARMA (PK)</option>
                         <option value="PRASUTI TANTRA & STREE ROGA">PRASUTI TANTRA & STREE ROGA (PTSR)</option>
                         <option value="KAUMARABHRITYA">KAUMARABHRITYA (KB)</option>
-                        <option value="SWASTHAVRITTA">SWASTHAVRITTA (SV)</option>
                         <option value="LABORATORY">LABORATORY (LAB)</option>
                         <option value="PHARMACY">PHARMACY (PHM)</option>
                         <option value="ATYAYIKA">ATYAYIKA (ATY)</option>
@@ -676,237 +673,6 @@
         </div>
     </div>
 
-    <!-- Assessment Modal -->
-    <div id="assessmentModal" class="modal">
-        <div class="modal-content" style="max-width: 900px;">
-            <span class="close" onclick="closeAssessmentModal()">&times;</span>
-            <h2>Comprehensive Performance Assessment</h2>
-            <div id="assessmentInternInfo" style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;"></div>
-            
-            <form id="assessmentForm">
-                <!-- Clinical Knowledge & Skills -->
-                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">1. Clinical Knowledge & Skills</h4>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
-                        <label>Theoretical knowledge of the subject</label>
-                        <select name="theoreticalKnowledge" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>Practical application of knowledge</label>
-                        <select name="practicalApplication" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>Clinical examination skills</label>
-                        <select name="clinicalExamination" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Professionalism & Ethics -->
-                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">3. Professionalism & Ethics</h4>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
-                        <label>Professional behavior and conduct</label>
-                        <select name="professionalism" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>Ethics and confidentiality</label>
-                        <select name="ethics" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>Team collaboration</label>
-                        <select name="teamwork" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Learning Attitude & Initiative -->
-                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">4. Learning Attitude & Initiative</h4>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
-                        <label>Eagerness to learn and improve</label>
-                        <select name="learningAttitude" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>Initiative and proactiveness</label>
-                        <select name="initiative" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>Response to feedback and guidance</label>
-                        <select name="feedbackResponse" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Attendance & Punctuality -->
-                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">5. Attendance & Punctuality</h4>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>Total Working Days</label>
-                            <input type="number" name="totalWorkingDays" id="totalWorkingDays" required min="1">
-                        </div>
-                        <div class="form-group">
-                            <label>Days Present</label>
-                            <input type="number" name="daysPresent" id="daysPresent" required min="0">
-                        </div>
-                        <div class="form-group">
-                            <label>Days Absent</label>
-                            <input type="number" name="daysAbsent" id="daysAbsent" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Punctuality Rating</label>
-                            <select name="punctuality" required>
-                                <option value="">Select Rating</option>
-                                <option value="5">Excellent (5)</option>
-                                <option value="4">Very Good (4)</option>
-                                <option value="3">Good (3)</option>
-                                <option value="2">Satisfactory (2)</option>
-                                <option value="1">Needs Improvement (1)</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Department-Specific Skills -->
-                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">6. Department-Specific Skills</h4>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
-                        <label>Mastery of department-specific procedures</label>
-                        <select name="departmentSkills" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>Understanding of department protocols</label>
-                        <select name="protocolUnderstanding" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Overall Assessment -->
-                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">7. Overall Assessment</h4>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <label>Overall Performance Rating</label>
-                        <select name="overallRating" required>
-                            <option value="">Select Overall Rating</option>
-                            <option value="Outstanding">Outstanding</option>
-                            <option value="Excellent">Excellent</option>
-                            <option value="Very Good">Very Good</option>
-                            <option value="Good">Good</option>
-                            <option value="Satisfactory">Satisfactory</option>
-                            <option value="Needs Improvement">Needs Improvement</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <label>Recommendation</label>
-                        <select name="recommendation" required>
-                            <option value="">Select Recommendation</option>
-                            <option value="Highly Recommended">Highly Recommended for Future Postings</option>
-                            <option value="Recommended">Recommended</option>
-                            <option value="Conditionally Recommended">Conditionally Recommended</option>
-                            <option value="Needs Further Training">Needs Further Training</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Comments Section -->
-                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">8. Detailed Comments & Feedback</h4>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <label>Strengths and Positive Observations</label>
-                        <textarea name="strengths" rows="3" style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 5px;" placeholder="Describe the intern's key strengths and positive qualities observed during the posting..."></textarea>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <label>Areas for Improvement</label>
-                        <textarea name="improvements" rows="3" style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 5px;" placeholder="Specify areas where the intern needs improvement and suggestions for development..."></textarea>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <label>Additional Comments</label>
-                        <textarea name="additionalComments" rows="4" style="width: 100%; padding: 10px; border: 1px solid #e1e8ed; border-radius: 5px;" placeholder="Any additional observations, recommendations, or comments about the intern's performance..."></textarea>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <button type="submit" class="btn btn-success" style="margin-right: 15px;">Submit Assessment</button>
-                    <button type="button" class="btn btn-secondary" onclick="closeAssessmentModal()">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <!-- Individual Report Modal -->
     <div id="reportModal" class="modal">
         <div class="modal-content">
@@ -923,8 +689,6 @@
         let currentHOD = null;
         let currentAdmin = null;
         let letterList = [];
-        let currentAssessmentInternId = null;
-        let currentAssessmentPostingId = null;
 
         // Admin credentials
         const adminCredentials = {
@@ -941,7 +705,6 @@
             'hodpk': { password: 'pk2025', department: 'PANCHAKARMA', displayName: 'PANCHAKARMA' },
             'hodptsr': { password: 'ptsr2025', department: 'PRASUTI TANTRA & STREE ROGA', displayName: 'PRASUTI TANTRA & STREE ROGA' },
             'hodkb': { password: 'kb2025', department: 'KAUMARABHRITYA', displayName: 'KAUMARABHRITYA' },
-            'hodsv': { password: 'sv2025', department: 'SWASTHAVRITTA', displayName: 'SWASTHAVRITTA' },
             'hodlab': { password: 'lab2025', department: 'LABORATORY', displayName: 'LABORATORY' },
             'hodphm': { password: 'phm2025', department: 'PHARMACY', displayName: 'PHARMACY' },
             'hodaty': { password: 'aty2025', department: 'ATYAYIKA', displayName: 'ATYAYIKA' },
@@ -958,7 +721,6 @@
             'PANCHAKARMA': 'PK',
             'PRASUTI TANTRA & STREE ROGA': 'PTSR',
             'KAUMARABHRITYA': 'KB',
-            'SWASTHAVRITTA': 'SV',
             'LABORATORY': 'LAB',
             'PHARMACY': 'PHM',
             'ATYAYIKA': 'ATY',
@@ -975,7 +737,6 @@
             'PANCHAKARMA': 'The intern should receive comprehensive training in all Panchakarma procedures including Vamana, Virechana, Basti, Nasya, and Raktamokshana. Practical training in preparation of medicines, patient selection, and post-procedural care is mandatory.',
             'PRASUTI TANTRA & STREE ROGA': 'The intern should be exposed to gynecological and obstetric care, antenatal and postnatal management, family planning methods, and treatment of gynecological disorders as per Ayurvedic principles.',
             'KAUMARABHRITYA': 'The intern should receive training in pediatric care, child development, vaccination, nutritional counseling, and management of pediatric disorders according to Ayurvedic pediatric principles.',
-            'SWASTHAVRITTA': 'The intern should be trained in preventive and social medicine, health promotion, disease prevention, community health programs, nutrition, yoga, and lifestyle management. Focus should be given to public health initiatives, health education, and understanding of environmental and occupational health.',
             'LABORATORY': 'The intern should be trained in various laboratory investigations, sample collection, processing, and interpretation of results. Knowledge of modern laboratory techniques and their correlation with Ayurvedic diagnostic methods should be emphasized.',
             'PHARMACY': 'The intern should receive practical training in pharmaceutical preparations, quality control, drug standardization, and manufacturing processes of Ayurvedic medicines as per GMP guidelines.',
             'ATYAYIKA': 'The intern should be trained in emergency medical care, first aid, trauma management, and critical care procedures. Integration of Ayurvedic emergency protocols with modern emergency medicine should be emphasized.',
@@ -1036,9 +797,11 @@
                 document.getElementById('adminRoleName').textContent = currentAdmin.role;
                 errorDiv.style.display = 'none';
                 
+                // Clear login form
                 document.getElementById('adminUsername').value = '';
                 document.getElementById('adminPassword').value = '';
 
+                // Render data
                 renderInterns();
                 updateSummaryStats();
             } else {
@@ -1074,6 +837,7 @@
                 renderHODPostings();
                 errorDiv.style.display = 'none';
                 
+                // Clear login form
                 document.getElementById('hodUsername').value = '';
                 document.getElementById('hodPassword').value = '';
             } else {
@@ -1088,42 +852,950 @@
             document.getElementById('hodLoginSection').style.display = 'block';
         }
 
-        // Continue with remaining JavaScript functions...
+        // HOD functions
+        function renderHODPostings() {
+            if (!currentHOD) return;
+
+            const hodPostingsDiv = document.getElementById('hodPostings');
+            const relevantPostings = [];
+
+            // Find all postings in this HOD's department
+            interns.forEach(intern => {
+                intern.postings.forEach(posting => {
+                    if (posting.department === currentHOD.department) {
+                        relevantPostings.push({
+                            intern: intern,
+                            posting: posting
+                        });
+                    }
+                });
+            });
+
+            if (relevantPostings.length === 0) {
+                hodPostingsDiv.innerHTML = '<p style="text-align: center; color: #7f8c8d; font-style: italic;">No postings found for your department.</p>';
+                return;
+            }
+
+            hodPostingsDiv.innerHTML = `
+                <h3 style="color: #2c3e50; margin-bottom: 20px;">Postings in ${currentHOD.displayName}</h3>
+                <div class="intern-list">
+                    ${relevantPostings.map(item => {
+                        const posting = item.posting;
+                        const intern = item.intern;
+                        const isVerified = posting.verification && posting.verification.verified;
+                        
+                        return `
+                            <div class="intern-card">
+                                <div class="intern-header">
+                                    <div>
+                                        <div class="intern-name">${intern.name}</div>
+                                        <div class="intern-reg">Reg: ${intern.regNo}</div>
+                                    </div>
+                                    <span class="verification-badge ${isVerified ? 'verified' : 'not-verified'}">
+                                        ${isVerified ? '✓ VERIFIED' : '⚠ NOT VERIFIED'}
+                                    </span>
+                                </div>
+
+                                <div class="posting-item">
+                                    <div class="posting-dept">${posting.department}</div>
+                                    <div class="posting-dates">
+                                        ${new Date(posting.fromDate).toLocaleDateString()} - 
+                                        ${new Date(posting.toDate).toLocaleDateString()}
+                                    </div>
+                                    <div class="posting-days">${posting.days} days</div>
+                                    
+                                    ${isVerified ? `
+                                        <div style="background: #d5f4e6; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                                            <strong>✓ Verified by:</strong> ${posting.verification.verifiedBy}<br>
+                                            <strong>Date:</strong> ${new Date(posting.verification.verifiedAt).toLocaleDateString()}<br>
+                                            <strong>Time:</strong> ${new Date(posting.verification.verifiedAt).toLocaleTimeString()}
+                                        </div>
+                                    ` : `
+                                        <div style="margin-top: 15px;">
+                                            <button class="btn btn-success" onclick="verifyPosting(${intern.id}, ${posting.id})">
+                                                Verify Posting
+                                            </button>
+                                        </div>
+                                    `}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function verifyPosting(internId, postingId) {
+            if (!currentHOD) return;
+
+            const intern = interns.find(i => i.id === internId);
+            if (!intern) return;
+
+            const posting = intern.postings.find(p => p.id === postingId);
+            if (!posting) return;
+
+            if (posting.department !== currentHOD.department) {
+                alert('You can only verify postings in your own department.');
+                return;
+            }
+
+            posting.verification = {
+                verified: true,
+                verifiedBy: currentHOD.displayName + ' HOD',
+                verifiedAt: new Date().toISOString()
+            };
+
+            saveData();
+            renderHODPostings();
+            alert('Posting verified successfully!');
+        }
+
+        // Utility functions
+        function calculateDays(fromDate, toDate) {
+            const start = new Date(fromDate);
+            const end = new Date(toDate);
+            const timeDiff = end.getTime() - start.getTime();
+            return Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
+        }
+
+        function saveData() {
+            localStorage.setItem('internData', JSON.stringify(interns));
+        }
+
+        // Letter generation functions
+        function generateSingleLetter() {
+            const name = document.getElementById('letterInternName').value.trim();
+            const regNo = document.getElementById('letterInternRegNo').value.trim();
+            const dept = document.getElementById('letterDept').value;
+            const fromDate = document.getElementById('letterFromDate').value;
+            const toDate = document.getElementById('letterToDate').value;
+
+            if (!name || !regNo || !dept || !fromDate || !toDate) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (new Date(fromDate) > new Date(toDate)) {
+                alert('From date cannot be later than to date.');
+                return;
+            }
+
+            const intern = {
+                name: name,
+                regNo: regNo,
+                department: dept,
+                fromDate: fromDate,
+                toDate: toDate,
+                days: calculateDays(fromDate, toDate)
+            };
+
+            const letterContent = generateLetterContent(intern);
+            downloadLetter(letterContent, `Posting_Letter_${intern.name}_${intern.regNo}_${deptCodes[dept] || 'DEPT'}.html`);
+            alert('Posting letter generated and downloaded successfully!');
+        }
+
+        function addToLetterList() {
+            const name = document.getElementById('letterInternName').value.trim();
+            const regNo = document.getElementById('letterInternRegNo').value.trim();
+            const dept = document.getElementById('letterDept').value;
+            const fromDate = document.getElementById('letterFromDate').value;
+            const toDate = document.getElementById('letterToDate').value;
+
+            if (!name || !regNo || !dept || !fromDate || !toDate) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (new Date(fromDate) > new Date(toDate)) {
+                alert('From date cannot be later than to date.');
+                return;
+            }
+
+            const letterItem = {
+                id: Date.now(),
+                name: name,
+                regNo: regNo,
+                department: dept,
+                fromDate: fromDate,
+                toDate: toDate,
+                days: calculateDays(fromDate, toDate)
+            };
+
+            letterList.push(letterItem);
+            renderLetterList();
+            clearLetterForm();
+            alert('Added to letter list successfully!');
+        }
+
+        function clearLetterForm() {
+            document.getElementById('letterInternName').value = '';
+            document.getElementById('letterInternRegNo').value = '';
+            document.getElementById('letterDept').value = '';
+            document.getElementById('letterFromDate').value = '';
+            document.getElementById('letterToDate').value = '';
+        }
+
+        function renderLetterList() {
+            const listDiv = document.getElementById('letterList');
+            const sectionDiv = document.getElementById('letterListSection');
+
+            if (letterList.length === 0) {
+                sectionDiv.style.display = 'none';
+                return;
+            }
+
+            sectionDiv.style.display = 'block';
+            listDiv.innerHTML = letterList.map((item, index) => `
+                <div class="letter-list-item">
+                    <div>
+                        <strong>${item.name}</strong> (${item.regNo}) → ${item.department}<br>
+                        <small style="color: #7f8c8d;">
+                            ${new Date(item.fromDate).toLocaleDateString()} to ${new Date(item.toDate).toLocaleDateString()} (${item.days} days)
+                        </small>
+                    </div>
+                    <button class="btn btn-danger" style="padding: 5px 10px; font-size: 0.8rem;" onclick="removeFromLetterList(${index})">
+                        Remove
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function removeFromLetterList(index) {
+            letterList.splice(index, 1);
+            renderLetterList();
+        }
+
+        function clearLetterList() {
+            letterList = [];
+            renderLetterList();
+        }
+
+        function generateBatchLetters() {
+            if (letterList.length === 0) {
+                alert('Please add interns to the letter list first.');
+                return;
+            }
+
+            letterList.forEach(intern => {
+                const letterContent = generateLetterContent(intern);
+                downloadLetter(letterContent, `Posting_Letter_${intern.name}_${intern.regNo}_${deptCodes[intern.department] || 'DEPT'}.html`);
+            });
+
+            alert(`Generated ${letterList.length} individual posting letters!`);
+        }
+
+        function generateDepartmentBatchLetters() {
+            if (letterList.length === 0) {
+                alert('Please add interns to the letter list first.');
+                return;
+            }
+
+            // Group by department
+            const departmentGroups = {};
+            letterList.forEach(intern => {
+                if (!departmentGroups[intern.department]) {
+                    departmentGroups[intern.department] = [];
+                }
+                departmentGroups[intern.department].push(intern);
+            });
+
+            Object.keys(departmentGroups).forEach(dept => {
+                const interns = departmentGroups[dept];
+                const batchLetterContent = generateDepartmentBatchLetter(dept, interns);
+                downloadLetter(batchLetterContent, `Batch_Posting_Letter_${deptCodes[dept] || 'DEPT'}.html`);
+            });
+
+            alert(`Generated batch letters for ${Object.keys(departmentGroups).length} departments!`);
+        }
+
+        function generateLetterContent(intern) {
+            const currentDate = new Date().toLocaleDateString('en-IN');
+            const guidelines = departmentGuidelines[intern.department] || '';
+            
+            return `
+                <div style="font-family: 'Times New Roman', serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.6;">
+                    <div style="text-align: center; border-bottom: 3px double #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
+                        <h1 style="color: #2c3e50; margin-bottom: 5px; font-size: 1.8rem;">JAIN AGM AYURVEDIC MEDICAL COLLEGE & HOSPITAL</h1>
+                        <p style="color: #7f8c8d; margin: 5px 0; font-size: 1.1rem;">VARUR</p>
+                        <p style="color: #7f8c8d; margin: 0; font-size: 0.9rem;">
+                            Recognized by Central Council of Indian Medicine (CCIM), New Delhi<br>
+                            Affiliated to The Tamil Nadu Dr. M.G.R. Medical University, Chennai
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <p style="margin: 5px 0;"><strong>From:</strong> The Medical Superintendent</p>
+                                <p style="margin: 5px 0;"><strong>Date:</strong> ${currentDate}</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <p style="margin: 5px 0;"><strong>Ref No:</strong> JAGMC/MS/${new Date().getFullYear()}/${String(Date.now()).slice(-4)}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>To,</strong></p>
+                        <p style="margin: 5px 0;">The Head of Department</p>
+                        <p style="margin: 5px 0;">${intern.department}</p>
+                        <p style="margin: 5px 0;">Jain AGM Ayurvedic Medical College & Hospital, Varur</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <p style="margin: 0;"><strong>Subject:</strong> Posting of Intern - ${intern.name} (${intern.regNo}) to ${intern.department} Department</p>
+                    </div>
+
+                    <p style="margin-bottom: 20px;"><strong>Dear Doctor,</strong></p>
+
+                    <div style="text-align: justify; margin-bottom: 25px;">
+                        <p style="margin-bottom: 15px;">
+                            This is to inform you that <strong>${intern.name}</strong> (Registration No: <strong>${intern.regNo}</strong>) has been posted to your department for rotational internship training with effect from <strong>${new Date(intern.fromDate).toLocaleDateString('en-IN')}</strong> to <strong>${new Date(intern.toDate).toLocaleDateString('en-IN')}</strong> (${intern.days} days).
+                        </p>
+
+                        <p style="margin-bottom: 15px;">
+                            You are hereby requested to provide the intern with comprehensive clinical training and practical experience in your department. The intern should be given adequate exposure to both theoretical knowledge and hands-on clinical practice to ensure optimal learning outcomes.
+                        </p>
+
+                        <p style="margin-bottom: 15px;">
+                            <strong>Training Guidelines for ${intern.department}:</strong><br>
+                            ${guidelines}
+                        </p>
+
+                        <p style="margin-bottom: 15px;">
+                            Please ensure that the intern maintains regular attendance, follows the department protocols, and completes all assigned clinical duties satisfactorily. Kindly provide necessary guidance and mentorship to help the intern achieve the learning objectives of the rotational internship program.
+                        </p>
+
+                        <p style="margin-bottom: 15px;">
+                            Upon completion of the posting period, please provide your assessment and verification of the intern's performance in your department. This will be essential for the intern's final internship completion certificate.
+                        </p>
+
+                        <p style="margin-bottom: 15px;">
+                            Your cooperation in providing quality training to our intern is highly appreciated.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <p style="margin-bottom: 15px;">Thanking you,</p>
+                        <p style="margin-bottom: 5px;">Yours faithfully,</p>
+                    </div>
+
+                    <div style="margin-top: 40px;">
+                        <div style="text-align: left;">
+                            <div style="border-top: 2px solid #2c3e50; width: 250px; margin-bottom: 10px;"></div>
+                            <p style="margin: 0; font-weight: bold;">MEDICAL SUPERINTENDENT</p>
+                            <p style="margin: 0; color: #7f8c8d;">Jain AGM Ayurvedic Medical College & Hospital</p>
+                            <p style="margin: 0; color: #7f8c8d;">Varur</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #e1e8ed;">
+                        <p style="margin: 0; font-size: 0.9em;"><strong>Copy to:</strong></p>
+                        <p style="margin: 2px 0; font-size: 0.9em;">1. The Principal, Jain AGM Ayurvedic Medical College, Varur</p>
+                        <p style="margin: 2px 0; font-size: 0.9em;">2. The Intern - ${intern.name} (${intern.regNo})</p>
+                        <p style="margin: 2px 0; font-size: 0.9em;">3. Office File</p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+                        <p style="margin: 0; font-size: 0.8em; color: #7f8c8d;">
+                            This is an official communication from Jain AGM Ayurvedic Medical College & Hospital, Varur
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateDepartmentBatchLetter(department, interns) {
+            const currentDate = new Date().toLocaleDateString('en-IN');
+            const guidelines = departmentGuidelines[department] || '';
+            
+            return `
+                <div style="font-family: 'Times New Roman', serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.6;">
+                    <div style="text-align: center; border-bottom: 3px double #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
+                        <h1 style="color: #2c3e50; margin-bottom: 5px; font-size: 1.8rem;">JAIN AGM AYURVEDIC MEDICAL COLLEGE & HOSPITAL</h1>
+                        <p style="color: #7f8c8d; margin: 5px 0; font-size: 1.1rem;">VARUR</p>
+                        <p style="color: #7f8c8d; margin: 0; font-size: 0.9rem;">
+                            Recognized by Central Council of Indian Medicine (CCIM), New Delhi<br>
+                            Affiliated to The Tamil Nadu Dr. M.G.R. Medical University, Chennai
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <p style="margin: 5px 0;"><strong>From:</strong> The Medical Superintendent</p>
+                                <p style="margin: 5px 0;"><strong>Date:</strong> ${currentDate}</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <p style="margin: 5px 0;"><strong>Ref No:</strong> JAGMC/MS/${new Date().getFullYear()}/${String(Date.now()).slice(-4)}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>To,</strong></p>
+                        <p style="margin: 5px 0;">The Head of Department</p>
+                        <p style="margin: 5px 0;">${department}</p>
+                        <p style="margin: 5px 0;">Jain AGM Ayurvedic Medical College & Hospital, Varur</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <p style="margin: 0;"><strong>Subject:</strong> Batch Posting of Interns to ${department} Department</p>
+                    </div>
+
+                    <p style="margin-bottom: 20px;"><strong>Dear Doctor,</strong></p>
+
+                    <div style="text-align: justify; margin-bottom: 25px;">
+                        <p style="margin-bottom: 15px;">
+                            This is to inform you that the following interns have been posted to your department for rotational internship training:
+                        </p>
+
+                        <div style="margin: 20px 0;">
+                            <table style="width: 100%; border-collapse: collapse; border: 2px solid #2c3e50;">
+                                <thead style="background: #f8f9fa;">
+                                    <tr>
+                                        <th style="border: 1px solid #2c3e50; padding: 12px; text-align: left;">S.No.</th>
+                                        <th style="border: 1px solid #2c3e50; padding: 12px; text-align: left;">Name</th>
+                                        <th style="border: 1px solid #2c3e50; padding: 12px; text-align: left;">Reg. No.</th>
+                                        <th style="border: 1px solid #2c3e50; padding: 12px; text-align: center;">From Date</th>
+                                        <th style="border: 1px solid #2c3e50; padding: 12px; text-align: center;">To Date</th>
+                                        <th style="border: 1px solid #2c3e50; padding: 12px; text-align: center;">Days</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${interns.map((intern, index) => `
+                                        <tr>
+                                            <td style="border: 1px solid #2c3e50; padding: 10px; text-align: center;">${index + 1}</td>
+                                            <td style="border: 1px solid #2c3e50; padding: 10px; font-weight: bold;">${intern.name}</td>
+                                            <td style="border: 1px solid #2c3e50; padding: 10px;">${intern.regNo}</td>
+                                            <td style="border: 1px solid #2c3e50; padding: 10px; text-align: center;">${new Date(intern.fromDate).toLocaleDateString('en-IN')}</td>
+                                            <td style="border: 1px solid #2c3e50; padding: 10px; text-align: center;">${new Date(intern.toDate).toLocaleDateString('en-IN')}</td>
+                                            <td style="border: 1px solid #2c3e50; padding: 10px; text-align: center;">${intern.days}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p style="margin-bottom: 15px;">
+                            You are hereby requested to provide these interns with comprehensive clinical training and practical experience in your department.
+                        </p>
+
+                        <p style="margin-bottom: 15px;">
+                            <strong>Training Guidelines for ${department}:</strong><br>
+                            ${guidelines}
+                        </p>
+
+                        <p style="margin-bottom: 15px;">
+                            Your cooperation in providing quality training to our interns is highly appreciated.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <p style="margin-bottom: 15px;">Thanking you,</p>
+                        <p style="margin-bottom: 5px;">Yours faithfully,</p>
+                    </div>
+
+                    <div style="margin-top: 40px;">
+                        <div style="text-align: left;">
+                            <div style="border-top: 2px solid #2c3e50; width: 250px; margin-bottom: 10px;"></div>
+                            <p style="margin: 0; font-weight: bold;">MEDICAL SUPERINTENDENT</p>
+                            <p style="margin: 0; color: #7f8c8d;">Jain AGM Ayurvedic Medical College & Hospital</p>
+                            <p style="margin: 0; color: #7f8c8d;">Varur</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function downloadLetter(content, filename) {
+            const blob = new Blob([`
+                <!DOCTYPE html>
+                <html><head><meta charset="UTF-8"><title>Posting Letter</title></head>
+                <body>${content}</body></html>
+            `], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Intern management functions
+        function addIntern() {
+            const name = document.getElementById('internName').value.trim();
+            const regNo = document.getElementById('internRegNo').value.trim();
+            
+            if (!name || !regNo) {
+                alert('Please fill in both name and registration number.');
+                return;
+            }
+
+            if (interns.some(intern => intern.regNo === regNo)) {
+                alert('Registration number already exists!');
+                return;
+            }
+
+            const intern = {
+                id: Date.now(),
+                name: name,
+                regNo: regNo,
+                postings: [],
+                totalDays: 0,
+                createdDate: new Date().toISOString()
+            };
+
+            interns.push(intern);
+            saveData();
+            renderInterns();
+            updateSummaryStats();
+            
+            document.getElementById('internName').value = '';
+            document.getElementById('internRegNo').value = '';
+            
+            alert('Intern added successfully!');
+        }
+
+        function renderInterns() {
+            const container = document.getElementById('internList');
+            const searchTerm = document.getElementById('searchIntern').value.toLowerCase();
+            
+            const filteredInterns = interns.filter(intern => 
+                intern.name.toLowerCase().includes(searchTerm) || 
+                intern.regNo.toLowerCase().includes(searchTerm)
+            );
+
+            if (filteredInterns.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #7f8c8d; font-style: italic;">No interns found.</p>';
+                return;
+            }
+
+            container.innerHTML = filteredInterns.map(intern => {
+                const progress = (intern.totalDays / 365) * 100;
+                const isCompleted = intern.totalDays >= 365;
+                const remainingDays = Math.max(0, 365 - intern.totalDays);
+
+                return `
+                    <div class="intern-card">
+                        <div class="intern-header">
+                            <div>
+                                <div class="intern-name">${intern.name}</div>
+                                <div class="intern-reg">Reg: ${intern.regNo}</div>
+                            </div>
+                            <span class="status-badge ${isCompleted ? 'status-completed' : 'status-pending'}">
+                                ${isCompleted ? 'COMPLETED' : 'PENDING'}
+                            </span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${Math.min(progress, 100)}%">
+                                ${Math.round(progress)}%
+                            </div>
+                        </div>
+
+                        <div style="margin: 10px 0;">
+                            <strong>Total Days:</strong> ${intern.totalDays}/365 days<br>
+                            ${!isCompleted ? `<strong>Remaining:</strong> ${remainingDays} days<br>` : ''}
+                            <strong>Departments Posted:</strong> ${intern.postings.length}/12
+                        </div>
+
+                        <div style="max-height: 200px; overflow-y: auto;">
+                            ${intern.postings.map(posting => {
+                                const isVerified = posting.verification && posting.verification.verified;
+                                return `
+                                    <div class="posting-item">
+                                        <div class="posting-dept">
+                                            ${posting.department}
+                                            <span class="verification-badge ${isVerified ? 'verified' : 'not-verified'}">
+                                                ${isVerified ? '✓' : '⚠'}
+                                            </span>
+                                        </div>
+                                        <div class="posting-dates">
+                                            ${new Date(posting.fromDate).toLocaleDateString()} - 
+                                            ${new Date(posting.toDate).toLocaleDateString()}
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span class="posting-days">${posting.days} days</span>
+                                            <button class="btn btn-danger" style="padding: 2px 8px; font-size: 0.7rem;" 
+                                                    onclick="deletePosting(${intern.id}, ${posting.id})">Delete</button>
+                                        </div>
+                                        ${isVerified ? `
+                                            <div style="font-size: 0.8rem; color: #27ae60; margin-top: 5px;">
+                                                Verified by ${posting.verification.verifiedBy} on ${new Date(posting.verification.verifiedAt).toLocaleDateString()}
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="openAddPostingModal(${intern.id})">Add Posting</button>
+                            <button class="btn btn-success" onclick="generateReport(${intern.id})">View Report</button>
+                            <button class="btn btn-secondary" onclick="downloadReport(${intern.id}, 'html')">Download HTML</button>
+                            <button class="btn btn-secondary" onclick="downloadReport(${intern.id}, 'json')">Download JSON</button>
+                            <button class="btn btn-danger" onclick="deleteIntern(${intern.id})">Delete Intern</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterInterns() {
+            renderInterns();
+        }
+
+        function updateSummaryStats() {
+            const total = interns.length;
+            const completed = interns.filter(i => i.totalDays >= 365).length;
+            const pending = total - completed;
+            const avgProgress = total > 0 ? (interns.reduce((sum, i) => sum + Math.min((i.totalDays / 365) * 100, 100), 0) / total) : 0;
+
+            document.getElementById('totalInterns').textContent = total;
+            document.getElementById('completedInterns').textContent = completed;
+            document.getElementById('pendingInterns').textContent = pending;
+            document.getElementById('avgProgress').textContent = `${avgProgress.toFixed(1)}%`;
+        }
+
+        function openAddPostingModal(internId) {
+            currentInternId = internId;
+            const intern = interns.find(i => i.id === internId);
+            
+            document.getElementById('modalInternInfo').innerHTML = `
+                <strong>Adding posting for:</strong> ${intern.name} (${intern.regNo})
+            `;
+            
+            document.getElementById('addPostingModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('addPostingModal').style.display = 'none';
+            document.getElementById('postingDept').value = '';
+            document.getElementById('postingFromDate').value = '';
+            document.getElementById('postingToDate').value = '';
+            currentInternId = null;
+        }
+
+        function savePosting() {
+            const dept = document.getElementById('postingDept').value;
+            const fromDate = document.getElementById('postingFromDate').value;
+            const toDate = document.getElementById('postingToDate').value;
+
+            if (!dept || !fromDate || !toDate) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (new Date(fromDate) > new Date(toDate)) {
+                alert('From date cannot be later than to date.');
+                return;
+            }
+
+            const intern = interns.find(i => i.id === currentInternId);
+            
+            if (intern.postings.some(p => p.department === dept)) {
+                alert('This intern already has a posting in this department.');
+                return;
+            }
+
+            const days = calculateDays(fromDate, toDate);
+            
+            const posting = {
+                id: Date.now(),
+                department: dept,
+                fromDate: fromDate,
+                toDate: toDate,
+                days: days,
+                verification: null
+            };
+
+            intern.postings.push(posting);
+            intern.totalDays = intern.postings.reduce((sum, p) => sum + p.days, 0);
+
+            saveData();
+            renderInterns();
+            updateSummaryStats();
+            closeModal();
+            
+            alert(`Posting added successfully! ${days} days recorded.`);
+        }
+
+        function deletePosting(internId, postingId) {
+            if (confirm('Are you sure you want to delete this posting?')) {
+                const intern = interns.find(i => i.id === internId);
+                intern.postings = intern.postings.filter(p => p.id !== postingId);
+                intern.totalDays = intern.postings.reduce((sum, p) => sum + p.days, 0);
+                
+                saveData();
+                renderInterns();
+                updateSummaryStats();
+            }
+        }
+
+        function deleteIntern(internId) {
+            if (confirm('Are you sure you want to delete this intern and all their postings?')) {
+                interns = interns.filter(i => i.id !== internId);
+                saveData();
+                renderInterns();
+                updateSummaryStats();
+            }
+        }
+
+        function generateReport(internId) {
+            const intern = interns.find(i => i.id === internId);
+            const progress = (intern.totalDays / 365) * 100;
+            const remainingDays = Math.max(0, 365 - intern.totalDays);
+            
+            const reportContent = `
+                <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
+                    <div style="text-align: center; border-bottom: 3px solid #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
+                        <h1 style="color: #2c3e50; margin-bottom: 10px;">JAIN AGM AYURVEDIC MEDICAL COLLEGE & HOSPITAL, VARUR</h1>
+                        <h2 style="color: #3498db; margin-bottom: 5px;">INTERNSHIP COMPLETION CERTIFICATE</h2>
+                        <p style="color: #7f8c8d;">Official Documentation of Rotational Internship</p>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">INTERN DETAILS</h3>
+                        <p><strong>Name:</strong> ${intern.name}</p>
+                        <p><strong>Registration Number:</strong> ${intern.regNo}</p>
+                        <p><strong>Total Days Completed:</strong> ${intern.totalDays} days</p>
+                        <p><strong>Remaining Days:</strong> ${remainingDays} days</p>
+                        <p><strong>Completion Status:</strong> 
+                            <span style="color: ${intern.totalDays >= 365 ? '#27ae60' : '#f39c12'}; font-weight: bold;">
+                                ${intern.totalDays >= 365 ? 'COMPLETED' : 'PENDING'}
+                            </span>
+                        </p>
+                        <p><strong>Progress:</strong> ${progress.toFixed(1)}%</p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 20px;">DEPARTMENT-wise POSTING DETAILS</h3>
+                        ${intern.postings.map(posting => `
+                            <div style="background: white; border: 1px solid #e1e8ed; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #3498db;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <strong style="color: #2c3e50; font-size: 1.1em;">${posting.department}</strong>
+                                    <span style="background: #3498db; color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.9em;">${posting.days} days</span>
+                                </div>
+                                <p style="color: #7f8c8d; margin: 5px 0;">
+                                    <strong>Period:</strong> ${new Date(posting.fromDate).toLocaleDateString()} to ${new Date(posting.toDate).toLocaleDateString()}
+                                </p>
+                                
+                                ${posting.verification && posting.verification.verified ? `
+                                    <div style="background: #d5f4e6; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                                        <p style="color: #27ae60; font-weight: bold; margin: 0;">✓ VERIFIED</p>
+                                        <p style="color: #27ae60; font-size: 0.9em; margin: 5px 0 0 0;">
+                                            Verified by: ${posting.verification.verifiedBy}<br>
+                                            Date: ${new Date(posting.verification.verifiedAt).toLocaleDateString()}
+                                        </p>
+                                    </div>
+                                ` : `
+                                    <div style="background: #fef9e7; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                                        <p style="color: #f39c12; font-weight: bold; margin: 0;">⚠ PENDING VERIFICATION</p>
+                                    </div>
+                                `}
+
+                                <div style="margin-top: 15px; text-align: center;">
+                                    <div style="border-top: 2px solid #2c3e50; width: 200px; margin: 0 auto;"></div>
+                                    <p style="margin-top: 8px; font-size: 0.9em; color: #2c3e50;"><strong>HOD Signature & Date</strong></p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0;">
+                        <div style="text-align: center;">
+                            <div style="border-top: 2px solid #2c3e50; width: 200px; margin: 0 auto 10px;"></div>
+                            <p style="font-weight: bold; color: #2c3e50;">MEDICAL SUPERINTENDENT</p>
+                            <p style="color: #7f8c8d; font-size: 0.9em;">Signature & Date</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="border-top: 2px solid #2c3e50; width: 200px; margin: 0 auto 10px;"></div>
+                            <p style="font-weight: bold; color: #2c3e50;">PRINCIPAL</p>
+                            <p style="color: #7f8c8d; font-size: 0.9em;">Signature & Date</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin: 30px 0; padding: 20px; background: #ecf0f1; border-radius: 10px;">
+                        <p style="font-weight: bold; color: #2c3e50; font-size: 1.1em;">THIS IS AN OFFICIAL DOCUMENT OF THE COLLEGE</p>
+                        <p style="color: #7f8c8d; margin-top: 10px;">The details mentioned above are officially verified and authenticated.</p>
+                        <p style="color: #7f8c8d; font-size: 0.9em; margin-top: 10px;">
+                            Generated on: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
+                        </p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('reportContent').innerHTML = reportContent;
+            document.getElementById('reportModal').style.display = 'block';
+        }
+
+        function closeReportModal() {
+            document.getElementById('reportModal').style.display = 'none';
+        }
+
+        function downloadReport(internId, format) {
+            const intern = interns.find(i => i.id === internId);
+            if (!intern) return;
+
+            if (format === 'html') {
+                generateReport(internId);
+                setTimeout(() => {
+                    const content = document.getElementById('reportContent').innerHTML;
+                    const blob = new Blob([`
+                        <!DOCTYPE html>
+                        <html><head><meta charset="UTF-8"><title>${intern.name} - Internship Report</title></head>
+                        <body>${content}</body></html>
+                    `], { type: 'text/html' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `${intern.name}_${intern.regNo}_Internship_Report.html`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                    closeReportModal();
+                }, 100);
+            } else if (format === 'json') {
+                const data = {
+                    intern: intern,
+                    generatedOn: new Date().toISOString(),
+                    college: "JAIN AGM AYURVEDIC MEDICAL COLLEGE & HOSPITAL, VARUR"
+                };
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${intern.name}_${intern.regNo}_Data.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        function exportAllData() {
+            const data = {
+                interns: interns,
+                exportedOn: new Date().toISOString(),
+                college: "JAIN AGM AYURVEDIC MEDICAL COLLEGE & HOSPITAL, VARUR",
+                version: "1.0"
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Intern_Data_Backup_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function importData() {
+            document.getElementById('importFile').click();
+        }
+
+        function handleImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.interns && Array.isArray(data.interns)) {
+                        if (confirm('This will replace all current data. Are you sure?')) {
+                            interns = data.interns;
+                            saveData();
+                            renderInterns();
+                            updateSummaryStats();
+                            alert('Data imported successfully!');
+                        }
+                    } else {
+                        alert('Invalid file format. Please select a valid backup file.');
+                    }
+                } catch (error) {
+                    alert('Error reading file. Please check the file format.');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function generateMasterReport() {
+            const masterReportContent = `
+                <div style="font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px;">
+                    <div style="text-align: center; border-bottom: 3px solid #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
+                        <h1 style="color: #2c3e50; margin-bottom: 10px;">JAIN AGM AYURVEDIC MEDICAL COLLEGE & HOSPITAL, VARUR</h1>
+                        <h2 style="color: #3498db; margin-bottom: 5px;">MASTER INTERNSHIP REPORT</h2>
+                        <p style="color: #7f8c8d;">Complete Overview of All Intern Postings</p>
+                        <p style="color: #7f8c8d;">Generated on: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px;">
+                        <div style="background: #3498db; color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                            <div style="font-size: 2em; font-weight: bold;">${interns.length}</div>
+                            <div>Total Interns</div>
+                        </div>
+                        <div style="background: #27ae60; color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                            <div style="font-size: 2em; font-weight: bold;">${interns.filter(i => i.totalDays >= 365).length}</div>
+                            <div>Completed</div>
+                        </div>
+                        <div style="background: #f39c12; color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                            <div style="font-size: 2em; font-weight: bold;">${interns.filter(i => i.totalDays < 365).length}</div>
+                            <div>Pending</div>
+                        </div>
+                        <div style="background: #9b59b6; color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                            <div style="font-size: 2em; font-weight: bold;">${(interns.reduce((sum, i) => sum + Math.min((i.totalDays / 365) * 100, 100), 0) / (interns.length || 1)).toFixed(1)}%</div>
+                            <div>Avg Progress</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin: 30px 0; padding: 20px; background: #ecf0f1; border-radius: 10px;">
+                        <p style="font-weight: bold; color: #2c3e50; font-size: 1.1em;">THIS IS AN OFFICIAL DOCUMENT OF THE COLLEGE</p>
+                        <p style="color: #7f8c8d; margin-top: 10px;">The details mentioned above are officially verified and authenticated.</p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('reportContent').innerHTML = masterReportContent;
+            document.getElementById('reportModal').style.display = 'block';
+            
+            setTimeout(() => {
+                const content = document.getElementById('reportContent').innerHTML;
+                const blob = new Blob([`
+                    <!DOCTYPE html>
+                    <html><head><meta charset="UTF-8"><title>Master Internship Report</title></head>
+                    <body>${content}</body></html>
+                `], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Master_Internship_Report_${new Date().toISOString().split('T')[0]}.html`;
+                a.click();
+                URL.revokeObjectURL(url);
+                closeReportModal();
+            }, 100);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            switchView('admin');
+            
+            window.onclick = function(event) {
+                const addModal = document.getElementById('addPostingModal');
+                const reportModal = document.getElementById('reportModal');
+                if (event.target == addModal) {
+                    closeModal();
+                }
+                if (event.target == reportModal) {
+                    closeReportModal();
+                }
+            };
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    closeReportModal();
+                }
+            });
+        });
     </script>
 </body>
 </html>
-
-                <!-- Patient Care & Communication -->
-                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 8px; border: 1px solid #e1e8ed;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">2. Patient Care & Communication</h4>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center;">
-                        <label>Patient interaction and communication</label>
-                        <select name="patientCommunication" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>Empathy and bedside manner</label>
-                        <select name="empathy" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
-                        </select>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; align-items: center; margin-top: 10px;">
-                        <label>History taking abilities</label>
-                        <select name="historyTaking" required>
-                            <option value="">Select Rating</option>
-                            <option value="5">Excellent (5)</option>
-                            <option value="4">Very Good (4)</option>
-                            <option value="3">Good (3)</option>
-                            <option value="2">Satisfactory (2)</option>
-                            <option value="1">Needs Improvement (1)</option>
